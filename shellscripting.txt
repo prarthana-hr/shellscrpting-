@@ -1,0 +1,169 @@
+1.Write a script that prints "Hello, World!" to the console.
+	
+#!bin/Bash
+echo "Hello World";
+
+2.Write a script that takes two numbers and an operator (+, -, *, /) as input and performs the corresponding arithmetic operation.
+
+#!bin/bash
+read -p "enter a number" num1;
+read -p "enter b number" num2;
+
+echo "entreted numbrs are $num1 $num2";
+echo "enter a for addition";
+echo "enter b for substraction";
+echo "enter c for multiplication";
+echo "enter d for division";
+
+read choise;
+
+case $choise in
+a)
+    res=$((num1+num2))
+    echo $res;;
+    
+b)
+    res=$((num1-num2))
+    echo $res;;
+    
+c)
+    res=$((num1*num2))
+    echo $res;;
+    
+d)
+    res=$((num1/num2))
+    echo $res;;
+    
+*)
+    echo "invalid";;
+    
+esac
+    
+
+
+3.Write a script that checks if a file exists in a given directory and prints an appropriate message.
+#!/bin/bash
+
+read -p "Enter the file path: " filepath
+
+if [ -f "$filepath" ]; then
+    echo "File exists."
+else
+    echo "File does not exist."
+fi
+
+
+4.Write a script that lists all files and directories in the current directory.
+	
+#!bin/bash
+
+ls -la
+
+5. Write a script that takes the user's name as input and greets the user with their name.
+#!/bin/bash
+read -p " enetr name" name
+echo " Hi, good moring $name"
+
+6.  Write a script that copies a file from one location to another. The script should take the source and destination paths as input.
+#!/bin/bash
+
+read -p "enter file" file;
+read -p "enter destiation" dest;
+
+if ["$#" -ne 2];then
+echo
+exit 1
+fi
+
+filename=$1;
+destination=$2;
+
+
+if [-f "$file"];then
+echo "file exists"
+else
+exit 1
+fi
+
+if [-d "$dest"];then
+echo "destination exists"
+else
+exit 1
+fi
+
+cp "$file" "$dest"
+
+if [$? == 0];then
+echo 'all good'
+else
+exit 1
+fi
+
+7. Write a script that prints numbers from 1 to 10 using a loop.
+#!/bin/bash
+
+for i in {1..10};do
+ echo $i
+done
+
+8.  Write a script that counts down from 10 to 1, pausing for one second between each number.
+counter=10
+while [ $counter -ge 1 ]
+do
+echo $counter
+counter=$((counter -1))
+sleep 1
+done
+echo "complete!!!!"
+
+for ((i=10;i>=1;i--))
+do
+echo $i
+sleep 1
+done
+echo "complete"
+
+9.  Write a script that calculates the factorial of a given number.
+read -p "enter the number" number
+fact=1
+for ((i=1;i<=number;i++))
+do
+fact=$((fact*i))
+
+done
+echo "fact of a $number is $fact"
+
+10. Write a script that takes three numbers as input and prints the largest one.
+read -p "number 1:" num1
+read -p "numner 2:" num2
+read -p "number 3:" num3
+
+if [ "$num1" -ge "$num2" ] && [ "$num1" -ge "$num3" ];then
+echo "num1 grater"
+elif [ "$num2" -ge "$num3" ] && [ "$num2" -ge "$num1" ];then
+echo "num2 grater"
+else
+echo "num3 grater"
+fi
+
+
+11. Write a script that takes a string as input and prints the reverse of the string.
+
+12. Write a script that takes a number as input and checks if it is even or odd.
+read -p "eneter number" number
+
+if [ $((number % 2)) -eq 0 ];then
+echo "even"
+else
+echo "odd"
+fi
+
+13. Write a script that counts the number of lines in a given file.
+read -p "filenem" file
+count= $(cat $file | wc -l)
+or
+c=$(wc -l < "$file")
+echo $count
+
+14. Write a script that prints all the environment variables.
+printenv
